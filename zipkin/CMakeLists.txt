@@ -20,7 +20,7 @@ if (BUILD_SHARED_LIBS)
   set_target_properties(zipkin PROPERTIES VERSION ${ZIPKIN_VERSION_STRING}
                                           SOVERSION ${ZIPKIN_VERSION_MAJOR})
   install(TARGETS zipkin 
-          LIBRARY DESTINATION lib)
+          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
 if (BUILD_STATIC_LIBS)
@@ -28,7 +28,7 @@ if (BUILD_STATIC_LIBS)
   set_target_properties(zipkin-static PROPERTIES OUTPUT_NAME zipkin)
   target_link_libraries(zipkin-static Threads::Threads ${CURL_LIBRARIES} ${WIN32_LIBRARIES})
   install(TARGETS zipkin-static
-          ARCHIVE DESTINATION lib)
+          ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
 if (BUILD_PLUGIN)

@@ -16,7 +16,7 @@ if (BUILD_SHARED_LIBS)
   set_target_properties(zipkin_opentracing PROPERTIES VERSION ${ZIPKIN_VERSION_STRING}
                                                       SOVERSION ${ZIPKIN_VERSION_MAJOR})
   install(TARGETS zipkin_opentracing 
-          LIBRARY DESTINATION lib)
+          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
 if (BUILD_STATIC_LIBS)
@@ -24,7 +24,7 @@ if (BUILD_STATIC_LIBS)
   set_target_properties(zipkin_opentracing-static PROPERTIES OUTPUT_NAME zipkin_opentracing)
   target_link_libraries(zipkin_opentracing-static ${OPENTRACING_LIB} zipkin)
   install(TARGETS zipkin_opentracing-static
-          ARCHIVE DESTINATION lib)
+          ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
 if (BUILD_PLUGIN)
@@ -37,7 +37,7 @@ if (BUILD_PLUGIN)
     -static-libstdc++
     -Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/export.map)
   install(TARGETS zipkin_opentracing_plugin
-          LIBRARY DESTINATION lib)
+          LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 endif()
 
 
